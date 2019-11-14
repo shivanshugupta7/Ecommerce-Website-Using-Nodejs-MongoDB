@@ -1,0 +1,63 @@
+<%- include('../_layouts/adminheader') %>
+
+    <h2 class="page-title">Add a Product</h2>
+    <a href="/admin/products" class="btn btn-primary">Back to all products</a>
+    <br>
+    <br>
+    <form method="post" action="/admin/products/add-product" enctype="multipart/form-data"> 
+      <!-- enctype for image/file uploading -->
+      <div class="form-group">
+          <label for="">Title</label>
+          <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title" required>
+       </div>
+
+       <div class="form-group">
+          <label for="">Description</label>
+          <textarea name="desc" class="form-control" cols="30" rows="10"  placeholder="Description" required><%= desc %></textarea> 
+       </div>
+
+       <div class="form-group">
+          <label for="">Category</label>
+          <select name="category" class="form-control">
+           <% categories.forEach(function(cat) { %>
+            <option value="<%= cat.slug %>"><%= cat.title %></option>
+          <% }); %>
+        </select>
+           
+       </div>
+
+         <div class="form-group">
+                <label for="">Price</label>
+                <input type="number" class="form-control" name="price"  value="<%= price %>" placeholder="Price" required>
+             </div>
+            
+             <div class="form-group">
+              <label for="">Quantity</label>
+              <input type="number" class="form-control" name="tt"  value="<%= tt %>" placeholder="Quantity" required>
+           </div>
+
+          <div class="form-group">
+            <label for="">Image</label>
+            <input type="file" class="form-control" name="image" id="img">
+            <img src="#" id="imgPreview" alt=" ">
+          </div>
+            
+
+        <button class="btn btn-default">SUBMIT</button>
+    </form>
+<script>
+      function readURL(input){
+        if(input.files && input.files[0]){
+          var reader=new FileReader();
+          reader.onload=function(e){
+            $("#imgPreview").attr('src',e.target.result).width(100).height(100);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+      $("#img").change(function(){
+        readURL(this);
+      })
+</script>
+<%- include('../_layouts/adminfooter') %>
+

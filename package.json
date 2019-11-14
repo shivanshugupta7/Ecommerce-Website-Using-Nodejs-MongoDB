@@ -1,0 +1,34 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6-alpha.6",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.17.0",
+    "express-validation": "^1.0.3",
+    "express-validator": "^6.2.0",
+    "fs-extra": "^8.1.0",
+    "mkdirp": "^0.5.1",
+    "mongoose": "^5.7.8",
+    "mongoose-paginate": "^5.0.3",
+    "node": "^12.13.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "resize-img": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+  
+  <body>
+
+    <div class="ajaxbg">
+      <div class="ajaxinner">
+        <h3>Redirecting to paypal by admin shivanshu </h3>
+        <img src="/images/ajax-loader.gif" alt="" >
+      </div>
+    </div>
+
+    <nav class="navbar navbar-inverse ">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">ShoppingCart</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <% pages.forEach(function(page){ %>
+                <% if (page.slug =="home") { %>
+                  <li><a href="/"><%= page.title %></a></li>
+                <% } else { %>
+              <li><a href="/<%= page.slug %>"><%= page.title %></a></li>
+                  <% } %>
+            <% }); %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/cart/checkout">My Cart</a>
+                
+              </li>
+              <% if(user) { %>
+                <li><a href="/users/logout">Hi,<%= user.username %> ( logout )</a></li>
+               <% } else { %>
+                
+             <li> <a href="/users/register">Register</a></li>
+             <li> <a href="/users/login">Log In</a></li>
+           <% } %>
+                  <!-- for admin page to show all pages -->
+           <% if(user && user.admin==1) { %>
+            <li><a href="/admin/pages">Admin Area</a></li>
+           <% } %>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+        <%- messages('messages', locals) %>
+        
+        <div class="row">
+          <div class="col-xs-12 col-md-3">
+              <h3>Categories</h3>
+              <ul class="list-group">
+                <li class="list-group-item"><a href="/products">All products</a></li>
+                  <% categories.forEach(function(c) { %>
+                      <li class="list-group-item"><a href="/products/<%= c.slug %>"><%= c.title %></a>
+                      </li>
+                <% }); %>
+              </ul>
+          </div>
+          <div class="col-xs-12 col-md-1"></div>
+          <div class="col-xs-12 col-md-8">  
+        
